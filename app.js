@@ -5,14 +5,11 @@ const cors = require('cors')
 
 app.use(cors())
 
-
-app.get('/api/home', (req, res) => {
-  res.json({message: "hello from server"})
-})
+const APIKEY = 'mJFkUizVTyhQcYyU7neDPQ2y'
 
 // GET /instances
 app.get('/instances', (req, res) => {
-  const options = {method: 'GET', headers: {'X-API-KEY': 'O6YrXgXnN6Z2jdCaR0sBOjI3'}};
+  const options = {method: 'GET', headers: {'X-API-KEY': APIKEY}};
 
   fetch('https://api.shadeform.ai/v1/instances', options)
     .then(response => response.json())
@@ -22,7 +19,7 @@ app.get('/instances', (req, res) => {
 
 // GET /instances/types
 app.get('/instances/types', (req, res) => {
-  const options = {method: 'GET', headers: {'X-API-KEY': 'O6YrXgXnN6Z2jdCaR0sBOjI3'}};
+  const options = {method: 'GET', headers: {'X-API-KEY': APIKEY}};
 
   fetch('https://api.shadeform.ai/v1/instances/types', options)
     .then(response => response.json())
@@ -48,7 +45,7 @@ app.get('/instances/create', (req, res) => {
 app.post('/instances/:id/delete', (req, res) => {
   const instanceId = req.params.id;
 
-  const options = {method: 'POST', headers: {'X-API-KEY': 'O6YrXgXnN6Z2jdCaR0sBOjI3'}};
+  const options = {method: 'POST', headers: {'X-API-KEY': APIKEY}};
 
   fetch(`https://api.shadeform.ai/v1/instances/${instanceId}/delete`, options)
     .then(response => response.json())
